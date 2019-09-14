@@ -1,3 +1,4 @@
+import 'package:add_del_3/viewPage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -146,10 +147,7 @@ class _HomeState extends State<Home> {
                                       Row(
                                         children: <Widget>[
                                           Text("view "),
-                                          Icon(
-                                            Icons.image_aspect_ratio,
-                                            color: Colors.yellowAccent,
-                                          ),
+                                          Icon3(index,context),
                                         ],
                                       ),
                                     ],
@@ -157,7 +155,8 @@ class _HomeState extends State<Home> {
                                   SizedBox(
                                     width: 20.0,
                                   ),
-                                  Container(
+                                  ClipRRect(
+                                     borderRadius: BorderRadius.circular(50.0),
                                       child: Image.network(
                                     image[index],
                                     height: 400.0,
@@ -204,10 +203,7 @@ class _HomeState extends State<Home> {
                                        Row(
                                         children: <Widget>[
                                           Text("view "),
-                                            Icon(
-                                        Icons.image_aspect_ratio,
-                                        color: Colors.yellowAccent,
-                                      ),
+                                           Icon3(index, context),
                                         ],
                                       ),
                                     
@@ -260,6 +256,19 @@ class _HomeState extends State<Home> {
               .showSnackBar(SnackBar(content: Text("added in cart")));
           _addCart(index);
         });
+  }
+
+  Widget Icon3(int index, BuildContext context){
+    return InkWell(
+                                            child: Icon(
+                                              Icons.image_aspect_ratio,
+                                              color: Colors.yellowAccent,
+                                            ),
+                                            onTap:(){
+                                              print(image[index]);
+                                               Navigator.push(context, MaterialPageRoute(builder: (_)=>ViewPage(image[index])));
+                                            }
+                                          );
   }
 
   Widget Drawer1() {
